@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get Hash
+        run: ./get_hash.sh
+
+      - name: Build and Ship
+        run: ./build_and_ship.sh
