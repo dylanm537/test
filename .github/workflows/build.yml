@@ -14,7 +14,7 @@ jobs:
           go-version: '1.23'
 
       - name: Get Hash
-        run: bash ./get_hash_test.sh
+        run: bash ./direc/get_hash_test.sh
 
       - name: Build and Ship
-        run: bash ./build_and_ship_test.sh
+        run: bash ./direc/build_and_ship_test.sh
