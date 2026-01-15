@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Get Hash
-        run: ./get_hash.sh
+        run: ./get_hash_test.sh
 
       - name: Build and Ship
-        run: ./build_and_ship.sh
+        run: ./build_and_ship_test.sh
