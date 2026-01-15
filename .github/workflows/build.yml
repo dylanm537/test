@@ -8,8 +8,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+
       - name: Get Hash
-        run: ./get_hash_test.sh
+        run: bash ./get_hash_test.sh
 
       - name: Build and Ship
-        run: ./build_and_ship_test.sh
+        run: bash ./build_and_ship_test.sh
