@@ -12,7 +12,9 @@ jobs:
     permissions:
         actions: read
     runs-on: ubuntu-latest
-    steps:
+    steps:      
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
       - name: Run Docker Container
         run: docker build --tag test .
@@ -20,9 +22,6 @@ jobs:
       - name: Run
         run: docker run -i -t test
 
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      
       - name: Get Artifact from Build Workflow
         uses: actions/download-artifact@v4
         with:
