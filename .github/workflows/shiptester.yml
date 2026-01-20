@@ -23,3 +23,6 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
           path: test
+    
+      - name: Test Artifact
+        run: go run test
