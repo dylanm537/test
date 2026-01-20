@@ -20,6 +20,4 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: go-binary
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ github.token }}
           path: test
