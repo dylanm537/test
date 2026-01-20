@@ -29,7 +29,18 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
           path: test
-    
+      
+      - name: Add The SSH Key
+        env: 
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run:
+          mkdir -p /tmp/runner/.ssh
+          ssh-keyscan tst-sdk-app-server.critical.blue >> /home/runner/.ssh/known_hosts
+          echo "test" > /home/runner/.ssh/github_actions
+          chmod 600 /home/runner/.ssh/github_actions
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add /home/runner/.ssh/github_actions
+
       - name: Test Artifact
         run: go run test
 
