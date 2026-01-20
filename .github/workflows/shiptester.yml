@@ -1,0 +1,23 @@
+name: ShipTester
+on: 
+  workflow_dispatch:
+  workflow_call:
+  workflow_run:
+    workflows: ["Build"]
+    types: [completed]
+    branches: ["main"]
+
+jobs:
+  ship-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Get Artifact from Build Workflow
+        uses: actions/download-artifact@v4
+        with:
+          name: go-binary
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+          path: test
