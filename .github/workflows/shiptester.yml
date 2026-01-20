@@ -20,7 +20,7 @@ jobs:
         run: docker build --tag test .
 
       - name: Run
-        run: docker run -i -t test
+        run: docker run -i test
 
       - name: Get Artifact from Build Workflow
         uses: actions/download-artifact@v4
