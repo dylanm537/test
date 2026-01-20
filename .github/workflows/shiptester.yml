@@ -34,8 +34,8 @@ jobs:
         env: 
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run:
-          mkdir -p /tmp/runner/.ssh/known_hosts
-          
+          mkdir -p /tmp/runner/.ssh
+          touch /home/runner/.ssh/known_hosts
           ssh-keyscan tst-sdk-app-server.critical.blue >> /home/runner/.ssh/known_hosts
           echo "test" > /home/runner/.ssh/github_actions
           chmod 600 /home/runner/.ssh/github_actions
