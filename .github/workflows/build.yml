@@ -18,3 +18,10 @@ jobs:
 
       - name: Build and Ship
         run: bash ./direc/build_and_ship_test.sh
+
+      - name: Upload the Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: go-binary
+          path: test
+          retention-days: 1
